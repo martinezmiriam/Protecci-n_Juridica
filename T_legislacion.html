@@ -80,6 +80,24 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+        /* Ajustes para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .image-section {
+        height: 77vh; /* Mantén la altura fija */
+        background-size: contain; /* Ajusta la imagen dentro del espacio disponible */
+        background-position: center; /* Asegura que se mantenga centrada */
+
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .image-section {
+        height: 77vh; /* Mantén la misma altura */
+        background-size: contain; /* La imagen siempre será visible completa */
+        background-position: center; /* No cambia su lugar */
+    }
+}
+
 
         /* Texto sobre la imagen */
         .image-section .text-overlay {
