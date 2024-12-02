@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+    <style>
+        body {
+            background-color: #9672b9;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Asegura que ocupe el alto total de la pantalla */
+        }
+
+        /* Barra de Navegación */
+        .block-menu {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: rgba(155, 155, 155, 0.653);
+        }
+
+        /* Estilo de los bloques */
+        .block-menu a {
+            display: block;
+            background-color: rgb(123, 78, 168);
+            padding: 9px;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            border-radius: 10px; /* Los bordes de cada bloque */
+            margin: 0 10px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        /* Efecto 3D al pasar el cursor */
+        .block-menu a:hover {
+            transform: translateY(3px) scale(1.1); 
+            /* Que tanto de 3D deseamos, ya sea para abajo se quita el menos, en caso para arriba se pone el menos */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: #6c1bbd; /*Color, cuando se llegue a seleccionar el bloque*/
+        }
+
+        /* Efectos de color */
+        .block-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; /*Espacio entre la linea y el bloque */
+            left: 0;
+            width: 100%;
+            height: 2px; /*Acho de la linea */
+            background-color: #000000;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease; /*Transicion de la linea de abajo osea de los bordes */
+        }
+        .block-menu a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Responsividad  */
+        @media (max-width: 768px) {
+            .block-menu {
+                flex-direction: column;
+            }
+        }
+
+        /* Imagen detrás de la barra de navegación */
+        .image-section {
+            position: relative;
+            height: 70vh; /* Ocupa el 70% de la pantalla */
+            background-image: url('img/LICENCIAS\ EN\ SOFTWARE.png'); /* URL de la imagen */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Texto sobre la imagen */
+        .image-section .text-overlay {
+            position: absolute;
+            top: 50%; /* Centrado verticalmente */
+            left: 50%; /* Centrado horizontalmente */
+            transform: translate(-50%, -50%); /* Ajusta el centro exacto */
+            color: white; /* Color del texto */
+            text-align: center; /* Centra el texto */
+            font-family: 'Poppins', sans-serif; /* Cambia la fuente */
+            font-size: 2.0rem; /* Tamaño del texto (grande) */
+            font-weight: bold; /* Negrita */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Sombra para resaltar el texto */
+            letter-spacing: 2px; /* Espaciado entre letras */
+        }
+
+        /* Contenedor principal */
+        .container {
+            padding-top: 50px; /* Espacio para la barra de navegación */
+            text-align: center;
+            color: rgb(25, 24, 24);
+        }
+     /* Estilo para los títulos */
+     h1.titulo-formal {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        font-weight: bold;
+        color: #83579e; /*Color de los titulos*/
+        margin-bottom: 15px;
+        margin-top: 20px;
+        }
+    
+    /* Subtítulos */
+    h2.titulo-formal {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 15px; /* Tamaño más pequeño para subtítulos */
+        font-weight: bold;
+        color: #83579e;
+        margin-bottom: 10px;
+        margin-top: 15px;
+        }
+
+    /* Estilo para los párrafos */
+    .parrafo-formal {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 16px;
+        text-align: justify;
+        line-height: 1.0;
+        margin-bottom: 15px;
+        padding: 0 20px;
+        color: rgb(0, 0, 0); /*Color del Texto */
+             }
+
+             /* Contenedor para el texto */
+             .contenedor-texto {
+             background-color: rgba(255, 254, 254, 0.9); /* Fondo gris claro semi-transparente */
+             padding: 20px;
+             margin: 20px auto;
+             max-width: 90%;
+             border-radius: 5px;
+             flex: 1; /* Permite que el contenido principal ocupe el espacio restante */
+             }
+
+             .imagen-derecha {
+                float: right; /* Posiciona la imagen a la derecha */
+                margin-left: 25px; /* Espacio entre la imagen y el texto */
+                margin-right: 70px; /* Valor negativo para moverla hacia la izquierda */
+                margin-bottom: 25px; /* Espacio inferior */
+                width: 375px; /* Ajusta el tamaño de la imagen */
+                height: auto; /* Mantiene las proporciones */
+            }
+
+            /* Configuracion de la tabla*/
+            .table-container {
+                margin: 20px auto; /* Centra la tabla */
+                max-width: 600px; /* Ancho máximo de la tabla */
+                font-family: 'Georgia', serif; /* Cambia la fuente principal */
+                font-size: 1rem; /* Tamaño base del texto */
+                color: #603c77; /* Color del texto */
+              }
+          
+              .table-wrapper {
+                overflow-x: auto; /* Habilita scroll horizontal en caso de necesitarlo */
+              }
+          
+              table {
+              width: 70%; /* Asegura que la tabla ocupe el 100% del contenedor */
+              border-collapse: collapse;
+              border-spacing: 0;
+              margin: 0 auto; /* Asegura el centrado horizontal */
+              background-color: #f9f9f9;
+              border-radius: 8px;
+              overflow: hidden;
+              box-shadow: 0 14px 50px #83579e;
+
+              }
+          
+              thead tr {
+                background-color: #83579e;
+                color: #fff;
+                text-align: left;
+                font-family: 'Times New Roman', Times, serif; /* Cambia la fuente solo del encabezado */
+                font-size: 1.2rem; /* Tamaño del texto en encabezados */
+              }
+          
+              th, td {
+                padding: 12px 16px; /* Espaciado interno */
+                text-align: left;
+                font-size: 0.8rem; /* Tamaño de texto más pequeño para celdas */
+                font-family: 'Times New Roman', Times, serif; /* Fuente para celdas */
+              }
+     /* Footer mejorado */
+     footer {
+        /* background-color: #000000;*/
+        text-align: center;
+        padding: 15px 20px;
+        margin-top: auto; /* Empuja el footer hacia abajo */
+        bottom: 0;
+        width: 90%;
+        font-size: 10px;
+        color: #000000;
+        line-height: 1.5;
+    }
+
+    footer span.copyright {
+        font-weight: 100;
+        margin-right: 5px;
+    }
+
+    footer span.authors {
+        font-style: italic;
+    }
+
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <div class="block-menu">
+        <a href="Inicio.html">Inicio</a>
+        <a href="Derechos.html">Derechos</a>
+        <a class="active" href="Programas.html">Programas de Computo</a>
+        <a href="T_legislacion.html">Legislación</a>
+    </div>
+
+    <!-- Imagen detrás de la barra -->
+    <div class="image-section">
+        <div class="text-overlay">
+            <!-- <h1>Licencias de Software Open Source</h1> -->
+        </div>
+    </div>
+<!--Informacion -->
+<div class="contenedor-texto">
+    <p class="parrafo-formal">
+        Las licencias de software son acuerdos legales que determinan cómo los usuarios pueden utilizar, 
+        modificar, distribuir o copiar un programa de software. Existen diferentes tipos, como las licencias 
+        propietarias, que restringen el uso y controlan los derechos del creador, y las licencias de software 
+        libre, que permiten acceder y modificar el código fuente. También están las licencias freemium, que 
+        combinan opciones gratuitas y de pago, y las de dominio público, donde los desarrolladores renuncian a 
+        sus derechos para un uso sin restricciones. Cada licencia define los permisos, restricciones y condiciones 
+        de uso del software.
+    </p>
+    <p class="parrafo-formal">
+        Entre los tipos principales de licencias se encuentran las licencias propietarias, que restringen el acceso 
+        al código fuente y limitan el uso del software según las condiciones del titular, como el número de 
+        instalaciones o usuarios permitidos. Por otro lado, las licencias de software libre y de código abierto 
+        (FOSS) ofrecen más libertad al usuario, permitiendo el acceso, modificación y distribución del código fuente,
+        con algunas restricciones dependiendo de la licencia específica, como la GPL, que exige mantener los mismos 
+        términos al redistribuir el software.
+    </p>
+    <p class="parrafo-formal">
+        Existen también licencias freemium y shareware, que combinan modelos gratuitos y de pago. Estas permiten a 
+        los usuarios probar el software con funciones limitadas o básicas antes de adquirir versiones completas. 
+        Las licencias de dominio público, por su parte, otorgan el derecho de usar, modificar y redistribuir el 
+        software sin restricciones, ya que el desarrollador renuncia a sus derechos de autor.
+ </p>
+
+ <h1 class="titulo-formal">Licencias de Software Open Source</h1>
+        <p class="parrafo-formal">
+            El software de código abierto se desarrolla y distribuye con la filosofía de accesibilidad. 
+            Esto significa que el código fuente está disponible para que cualquiera pueda estudiarlo, 
+            modificarlo o compartirlo según las necesidades.
+        </p>
+        <h2 class="titulo-formal">Ejemplo:</h2>
+        <ul>
+            <li><strong>GNU GPL (General Public License): </strong>
+                Garantiza que el software y cualquier derivado permanezcan libres bajo la misma licencia. 
+            </li>
+            <li><strong>MIT: </strong>
+                Más permisiva, permite su uso incluso en software propietario.
+            </li>
+            <li><strong>Apache License: </strong>
+                Añade protección frente a posibles demandas por patentes.
+            </li>
+        </ul>
+
+ <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Ventajas</th>
+          <th>Desventaja</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th><strong>Costo:</strong> La mayoría de las licencias open source no implican costos, lo que reduce barreras económicas.</th>
+          <th><strong>Curva de aprendizaje:</strong> Los usuarios sin conocimientos técnicos pueden tener dificultades.</th>
+        </tr>
+        <tr>
+          <th><strong>Adaptabilidad:</strong> Ideal para personalizaciones, permite a las empresas adaptar el software a sus necesidades.</th>
+          <th><strong>Soporte comunitario:</strong> Depende de foros, documentación y comunidades, que no siempre ofrecen respuestas rápidas o personalizadas.</th>
+        </tr>
+        <tr>
+          <th><strong>Comunidad activa:</strong> La colaboración de miles de desarrolladores contribuye a mejorar constantemente el software.</th>
+          <th><strong>Funcionalidades específicas:</strong> Algunos proyectos de código abierto no tienen todas las características avanzadas que empresas más grandes podrían necesitar.</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <h1 class="titulo-formal">Licencias de Software Propietario</h1>
+        <p class="parrafo-formal">
+            El software propietario está bajo licencias que limitan el acceso al código fuente y restringen la 
+            capacidad de los usuarios para modificar o redistribuir el software.
+        </p>
+        <h2 class="titulo-formal">Ejemplos en...</h2>
+        <h2 class="titulo-formal">Microsoft Software License Terms (MSLT)</h2>
+        <ul>
+            <li>
+                Prohíbe la modificación o ingeniería inversa del software.   
+            </li>
+            <li>
+                Limita el uso a un número específico de dispositivos o usuarios.
+            </li>
+            <li>
+                Incluye cláusulas sobre soporte y actualizaciones proporcionadas por Microsoft.
+            </li>
+        </ul>
+        <!-- Empieza el segundo ejemplo de las licencias-->
+        <h2 class="titulo-formal">Apple End User License Agreement (EULA)</h2>
+        <ul>
+            <li>
+                Restringe el uso del software exclusivamente a los dispositivos Apple.   
+            </li>
+            <li>
+                Prohíbe la redistribución, descompilación o modificación.
+            </li>
+            <li>
+                En algunos casos, el uso puede estar vinculado al hardware adquirido.
+            </li>
+        </ul>
+
+ <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Ventajas</th>
+          <th>Desventaja</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <!-- Arriba van las Ventajas-->
+         <!-- Abajo van las Desventajas-->
+        <tr>
+          <th><strong>Soporte dedicado: </strong>
+            Los proveedores suelen ofrecer atención al cliente y actualizaciones.        
+        </th>
+          <th><strong>Costo elevado: </strong>
+            Además de la licencia inicial, puede requerir pagos recurrentes por soporte o mantenimiento.        
+        </th>
+        </tr>
+        <tr>
+          <th><strong>Estabilidad: </strong> 
+            Probado y diseñado para funcionar perfectamente en un entorno específico.        
+        </th>
+          <th><strong>Falta de flexibilidad:</strong> 
+            Los usuarios deben aceptar las características tal como están diseñadas, sin posibilidad de personalización.
+        </th>
+        </tr>
+        <tr>
+          <th><strong>Funcionalidades avanzadas: </strong> 
+            Las empresas invierten en características que no suelen estar presentes en las alternativas de código abierto.
+        </th>
+          <th><strong>Riesgo de dependencia: </strong> 
+            Si el proveedor deja de operar, la empresa puede quedar sin soporte.
+
+        </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<footer>
+    <span class="copyright">©</span> 
+    <span class="authors">2024 Autor Jose Bejamin Salazar Garduño</span>
+</footer>
+</body>
+</html>

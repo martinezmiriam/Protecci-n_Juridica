@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de Navegación</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <style>
+        /* Estilo del fondo */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('img/opcion2.png'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Asegura que ocupe el alto total de la pantalla */
+        }
+
+        /* Barra de navegación lalala */
+        .block-menu {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            flex-wrap: wrap; /* Permite que los bloques se apilen en pantallas pequeñas */
+            background-color: rgba(155, 155, 155, 0.653);
+        }
+
+        /* Estilo de los bloques */
+        .block-menu a {
+            display: block;
+            background-color: rgba(126, 125, 126, 0.76);
+            padding: 9px;
+            text-decoration: none;
+            color: rgb(255, 252, 252);
+            text-align: center;
+            border-radius: 10px; /* Los bordes de cada bloque */
+            margin: 0 10px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Efecto 3D al pasar el cursor */
+        .block-menu a:hover {
+            transform: translateY(3px) scale(1.1); 
+            /* Que tanto de 3D deseamos, ya sea para abajo se quita el menos, en caso para arriba se pone el menos */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: transparent; /*Color, cuando se llegue a seleccionar el bloque*/
+        }
+
+        /* Efectos de color */
+        .block-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; /*Espacio entre la linea y el bloque */
+            left: 0;
+            width: 100%;
+            height: 2px; /*Acho de la linea */
+            background-color: #000000;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease; /*Transicion de la linea de abajo osea de los bordes */
+        }
+
+        .block-menu a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Responsividad  */
+        @media (max-width: 768px) {
+            .block-menu {
+                flex-direction: column;
+            }
+        }
+
+        /* Imágenes en esquinas lalalala*/
+        .corner-images {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1100;
+        }
+
+        .corner-images img {
+            position: absolute;
+            width: 120px; /* tamaño de las imagenes */
+            height: auto;
+            z-index: 1100;
+        }
+
+        .corner-images .left {
+            top: 9px;
+            left: 20px; /* tamaño del Logo de Mexico */
+        }
+
+        .corner-images .right {
+            top: 9px;
+            right: 20px; /* Tamaño del logo de Sanfe */
+        }
+
+        /* Contenedor principal */
+        .container {
+            padding-top: 10px; /* Espacio para la barra de navegación */
+            text-align: center;
+        }
+
+        h1 {
+            color: rgb(0, 0, 0);
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #000000, #000000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Tarjetas */
+        .card {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(39, 43, 95, 0.39));
+            border: none;
+            box-shadow: 10px 28px 28px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-body {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            font-size: 1rem;
+            text-align: center; 
+            color: rgb(0, 0, 0);
+            border-radius: 10px;
+            line-height: 1.3;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1d3161;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 5px 0;
+            
+        }
+
+        /* Footer mejorado */
+        footer {
+            text-align: center;
+            padding: 12px 12px;
+            color: #000000;
+            position: relative;
+            bottom: -70px;
+            width: 99%;
+           
+            
+        }
+
+        footer span.copyright {
+            font-weight: 100;
+            margin-right: -6px;
+        }
+
+        footer span.authors {
+            font-style: italic;
+            font-size: 0.5rem;
+
+        }
+        button {
+            font-size: 10px; /* Tamaño del texto del botón */
+            padding: 5px 10px; /* Espaciado interno */
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), #1d3161);/* Color de fondo del botón */
+            color: white; /* Color del texto */
+            border: none; /* Sin borde */
+            border-radius: 5px; /* Bordes redondeados */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+        }
+
+        button:hover {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), #1e236c);
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Imágenes en las esquinas -->
+    <div class="corner-images" style="position: relative; width: 100%;"> <!-- sytle: es llegar a ponerlo dentro de la Barra de menu-->
+        <img class="left" src="img/TECMEX.png" alt="Tec de México">
+        <img class="right" src="img/TESSFP.png" alt="TES San Felipe">
+    </div>
+
+    <!-- Barra de navegación -->
+    <div class="block-menu">
+        <a class="active" href="Inicio.html">Inicio</a>
+        <a href="Derechos.html">Derechos</a>
+        <a href="Programas.html">Programas de Computo</a>
+        <a href="T_legislacion.html">Legislación</a>
+    </div>
+
+    <!-- Contenido principal -->
+    <section class="container"> 
+        <h1>Protección  Juridica</h1>
+        <!-- Sección de tarjetas -->
+        <div class="row mt-5 mb-5 justify-content-center">
+            <!-- Tarjeta 1 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Proteger datos personales</h5>
+                        <p class="card-text">
+                            En la era digital, las empresas deben solicitar tu autorización para usar tu información 
+                            y pueden ser multadas si no la manejan correctamente. Un ciudadano tiene 
+                            derecho a saber qué datos suyos están almacenados y puede exigir su eliminación si asi lo desea.
+                        </p>
+                        <button type="button" onclick="window.open('https://portal-transparencia.funcionpublica.gob.mx/wp-content/uploads/2024/04/Entendiendo-la-Proteccion-de-Datos-De-la-Definicion-a-la-Responsabilidad-Juridica.pdf', '_blank')">
+                            Ver mas...</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Tarjeta 2 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Proteccion juridica de PC</h5>
+                        <p>
+                        Un dato interesante es que en muchos países existe legislación específica que sanciona con multas 
+                        y hasta penas de cárcel el acceso no autorizado a equipos informáticos, 
+                       considerándolo un delito contra la privacidad y la integridad de la información personal.
+                    </p>
+                    <button type="button" onclick="window.open('https://www.faroolegal.com/post/proteccion-juridica-del-software-derechos-de-autor', '_blank')">
+                        Ver mas...</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Tarjeta 3 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Contratos Informaticos</h5>
+                        <p>
+                        Acuerdo legal entre partes que regula la prestación de servicios, desarrollo, mantenimiento 
+                        o licencias de software y tecnologías relacionadas. Es fundamental para proteger los intereses de 
+                        ambas partes y detallar aspectos como derechos de propiedad intelectual yconfidencialidad, 
+                        </p>
+                        <button type="button" onclick="window.open('https://www.docusign.com/es-mx/blog/contratos-informaticos', '_blank')">
+                            Ver mas...
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <span class="copyright">©</span> 
+            <span class="authors">2024 Diseñadores: Miriam Martinez, Tannia Garcia, Bejamin Salazar</span>
+        </footer>
+    </section>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

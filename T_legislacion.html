@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+    <style>
+        body {
+            background-color: #3499c87d;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Asegura que ocupe el alto total de la pantalla */
+        }
+
+        /* Barra de Navegación */
+        /* Barra de Navegación */
+        .block-menu {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: rgba(155, 155, 155, 0.653);
+        }
+
+        /* Estilo de los bloques */
+        .block-menu a {
+            display: block;
+            background-color: rgb(35, 154, 187);
+            padding: 9px;
+            text-decoration: none;
+            color: rgb(255, 254, 254);
+            text-align: center;
+            border-radius: 10px; /* Los bordes de cada bloque */
+            margin: 0 10px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        /* Efecto 3D al pasar el cursor */
+        .block-menu a:hover {
+            transform: translateY(3px) scale(1.1); 
+            /* Que tanto de 3D deseamos, ya sea para abajo se quita el menos, en caso para arriba se pone el menos */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: #166294; /*Color, cuando se llegue a seleccionar el bloque*/
+        }
+
+        /* Efectos de color */
+        .block-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; /*Espacio entre la linea y el bloque */
+            left: 0;
+            width: 100%;
+            height: 2px; /*Acho de la linea */
+            background-color: #000000;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease; /*Transicion de la linea de abajo osea de los bordes */
+        }
+        .block-menu a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Responsividad  */
+        @media (max-width: 768px) {
+            .block-menu {
+                flex-direction: column;
+            }
+        }
+
+        /* Imagen detrás de la barra de navegación */
+        .image-section {
+            position: relative;
+            height: 70vh; /* Ocupa el 70% de la pantalla */
+            background-image: url('img/ProJurdica.png'); /* URL de la imagen */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Texto sobre la imagen */
+        .image-section .text-overlay {
+            position: absolute;
+            top: 50%; /* Centrado verticalmente */
+            left: 50%; /* Centrado horizontalmente */
+            transform: translate(-50%, -50%); /* Ajusta el centro exacto */
+            color: white; /* Color del texto */
+            text-align: center; /* Centra el texto */
+            font-family: 'Poppins', sans-serif; /* Cambia la fuente */
+            font-size: 2.0rem; /* Tamaño del texto (grande) */
+            font-weight: bold; /* Negrita */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Sombra para resaltar el texto */
+            letter-spacing: 2px; /* Espaciado entre letras */
+        }
+
+        /* Contenedor principal */
+        .container {
+            padding-top: 50px; /* Espacio para la barra de navegación */
+            text-align: center;
+            color: rgb(25, 24, 24);
+        }
+
+         /* Estilo para los títulos */
+        h1.titulo-formal {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+            font-weight: bold;
+            color: #256a8be4; /*Color de los titulos*/
+            margin-bottom: 15px;
+            margin-top: 20px;
+            }
+        
+        /* Subtítulos */
+        h2.titulo-formal {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 15px; /* Tamaño más pequeño para subtítulos */
+            font-weight: bold;
+            color: #256a8be4;
+            margin-bottom: 10px;
+            margin-top: 15px;
+            }
+    
+            /* Estilo para los párrafos */
+            .parrafo-formal {
+           font-family: 'Times New Roman', Times, serif;
+           font-size: 16px;
+            text-align: justify;
+           line-height: 1.0;
+            margin-bottom: 15px;
+            padding: 0 20px;
+            color: rgb(0, 0, 0); /*Color del Texto */
+            }
+            /* Contenedor para el texto */
+            .contenedor-texto {
+            background-color: rgba(255, 254, 254, 0.9); /* Fondo gris claro semi-transparente */
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 90%;
+            border-radius: 5px;
+            flex: 1; /* Permite que el contenido principal ocupe el espacio restante */
+
+            }
+            .imagen-derecha {
+                float: right; /* Posiciona la imagen a la derecha */
+                margin-left: 25px; /* Espacio entre la imagen y el texto */
+                margin-right: 70px; /* Valor negativo para moverla hacia la izquierda */
+                margin-bottom: 25px; /* Espacio inferior */
+                width: 375px; /* Ajusta el tamaño de la imagen */
+                height: auto; /* Mantiene las proporciones */
+            }
+
+         /* Video alineado a la derecha */
+         .video-container {
+            float: right;
+            margin-left: 30px;
+            width: 35%; /* Tamaño relativo al contenedor */
+        }
+
+        .video-container video {
+            width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Ajustes para responsividad */
+        @media (max-width: 768px) {
+            .video-container {
+                float: none;
+                width: 100%;
+                margin: 0 auto 20px;
+            }
+        }
+    /* Configuracion de la tabla*/
+    .table-container {
+        margin: 20px auto; /* Centra la tabla */
+        max-width: 600px; /* Ancho máximo de la tabla */
+        font-family: 'Georgia', serif; /* Cambia la fuente principal */
+        font-size: 1rem; /* Tamaño base del texto */
+        color: #603c77; /* Color del texto */
+      }
+  
+      .table-wrapper {
+        overflow-x: auto; /* Habilita scroll horizontal en caso de necesitarlo */
+      }
+  
+      table {
+      width: 70%; /* Asegura que la tabla ocupe el 100% del contenedor */
+      border-collapse: collapse;
+      border-spacing: 0;
+      margin: 0 auto; /* Asegura el centrado horizontal */
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 14px 50px #256a8be4;
+
+      }
+  
+      thead tr {
+        background-color: #256a8be4;
+        color: #fff;
+        text-align: left;
+        font-family: 'Times New Roman', Times, serif; /* Cambia la fuente solo del encabezado */
+        font-size: 1.2rem; /* Tamaño del texto en encabezados */
+      }
+  
+      th, td {
+        padding: 12px 16px; /* Espaciado interno */
+        text-align: left;
+        font-size: 0.8rem; /* Tamaño de texto más pequeño para celdas */
+        font-family: 'Times New Roman', Times, serif; /* Fuente para celdas */
+      }
+     /* Footer mejorado */
+     
+     footer {
+        /* background-color: #000000;*/
+        text-align: center;
+        padding: 15px 20px;
+        margin-top: auto; /* Empuja el footer hacia abajo */ 
+        bottom: 0;
+        width: 90%;
+        font-size: 10px;
+        color: #000000;
+        line-height: 1.5;
+    }
+
+    footer span.copyright {
+        font-weight: 100;
+        margin-right: 5px;
+    }
+
+    footer span.authors {
+        font-style: italic;
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <div class="block-menu">
+        <a href="Inicio.html">Inicio</a>
+        <a href="Derechos.html">Derechos</a>
+        <a  href="Programas.html">Programas de Computo</a>
+        <a class="active" href="T_legislacion.html">Legislación</a>
+    </div>
+
+    <!-- Imagen detrás de la barra -->
+    <div class="image-section">
+        <!--<div class="text-overlay">
+            <h1>Proteccion Juridica</h1>
+        </div> -->
+    </div>
+<!--Informacion -->
+    <div class="contenedor-texto">
+            <p class="parrafo-formal">
+                La legislación es el conjunto de normas y leyes que regulan la conducta de los ciudadanos en una sociedad,
+                estableciendo un marco que asegura el orden, protege los derechos y promueve el bienestar general. 
+                Las leyes son creadas por los órganos legislativos, que en los sistemas democráticos suelen ser parlamentos o 
+                congresos elegidos por el pueblo. Estas leyes tienen como finalidad establecer un orden que permita la convivencia 
+                pacífica, proteger los derechos fundamentales de los individuos y facilitar el desarrollo económico y social.
+                Las normas legales abarcan una amplia gama de aspectos de la vida humana, desde los derechos civiles, hasta la regulación
+                del trabajo, la propiedad, la educación, la salud, la justicia, la seguridad y el medio ambiente. 
+                La legislación también establece los mecanismos mediante los cuales se sancionan las conductas ilegales y se resuelven 
+                los conflictos entre individuos o entidades.
+         </p>
+    <!-- Subtema: Tipos de Legislación -->
+         <h2 class="titulo-formal">Tipos de Legislación</h2>
+         <img class="imagen-derecha" src="img/ProJuridica2.png" alt="Ejemplo de imagen">
+         <ol>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+                <strong>Legislación Nacional:</strong><br>
+                Normas que rigen en todo el territorio de un país.<br>
+                <em>Ejemplo:</em> La Constitución, códigos civiles, penales, etc.
+            </li>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+                <strong>Legislación Regional:</strong><br>
+                Normas específicas de una región o estado dentro de un país.<br>
+                <em>Ejemplo:</em> Leyes autonómicas en España.
+            </li>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+                <strong>Legislación Local:</strong>
+                <br>Normas que aplican a un municipio o localidad.<br>
+                <em>Ejemplo:</em> Ordenanzas municipales.
+            </li>
+        </ol>
+        <h2 class="titulo-formal">Fuentes de la Legislación</h2>
+        <ul>
+            <li><strong>Constitución</strong>
+            Documento fundamental que establece los principios y derechos básicos.   
+            </li>
+            <li><strong>Leyes: </strong>
+            Normas aprobadas por el poder legislativo.
+            </li>
+            <li><strong>Reglamentos:</strong>
+            Normas que desarrollan y detallan las leyes.
+            </li>
+            <li><strong>Decretos: </strong>
+            Normas emitidas por el poder ejecutivo.
+            </li>
+        </ul>
+        
+            <h2 class="titulo-formal">Tipos de Legislación</h2>
+        <ol>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+               <strong>Iniciativa: </strong>Propuesta de una nueva ley.
+            </li>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+               <strong>Discusión: </strong>Análisis y debate en el órgano legislativo.
+            </li>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+               <strong>Aprobación: </strong>Votación y aceptación de la ley.
+            </li>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+                <strong>Promulgación: </strong>Publicación oficial para su entrada en vigor.
+             </li>
+        </ol>
+        <!-- Subtítulo para el video -->
+        <div class="video-container">
+            <video controls>
+                <source src="img/1201 (1)(1).mp4" type="video/mp4">
+                <p>Tu navegador no soporta el formato de video o el video no se puede cargar. Intenta <a href="tu_video.mp4" download>descargar el video</a>.</p>
+            </video>
+        </div>
+        <h2 class="titulo-formal">Importancia de la Legislación</h2>
+        <p class="parrafo-formal">
+            La legislación cumple varias funciones fundamentales para el bienestar de la sociedad. 
+            En primer lugar, <strong>regula la conducta</strong>, estableciendo lo que es legal e ilegal. 
+            A través de este marco normativo, se definen las acciones permitidas y las prohibidas, 
+            lo que ayuda a mantener el orden y la seguridad dentro de la comunidad.
+        </p>
+        <p class="parrafo-formal">
+            Además, la legislación <strong> protege los derechos</strong> de los ciudadanos, asegurando que las libertades 
+            y garantías individuales sean respetadas por el Estado y por los demás individuos. Esto incluye 
+            derechos fundamentales como la libertad de expresión, el derecho a la propiedad y la protección contra abusos.
+        </p>
+        <p class="parrafo-formal">
+            Finalmente, la legislación <strong>promueve la justicia</strong> , buscando garantizar la equidad y la justicia social. 
+            A través de sus normas, se busca que todos los ciudadanos tengan las mismas oportunidades y sean tratados de manera 
+            justa, sin discriminación, contribuyendo a la creación de una sociedad más igualitaria y solidaria.
+        </p>
+        <h2 class="titulo-formal">Ejemplos de Legislación</h2>
+        <ul>
+            <li><strong>Código Civil:  </strong>
+                Regula las relaciones entre particulares.  
+            </li>
+            <li><strong>Código Penal </strong>
+                Establece los delitos y sus penas
+            </li>
+            <li><strong>Ley de Protección de Datos:  </strong>
+                Regula el uso de datos personales.
+            </li>
+        </ul>
+     <h1 class="titulo-formal">Legislación Nacional</h1>
+     <p class="parrafo-formal">
+        La legislación es el conjunto de normas y leyes que regulan la conducta 
+        de los ciudadanos en una sociedad. Estas normas son creadas por los órganos 
+        legislativos y tienen como objetivo mantener el orden, proteger los derechos y 
+        promover el bienestar general.
+    </p>
+    <p class="parrafo-formal">
+        En el ámbito nacional, la legislación abarca diversas áreas esenciales para el desarrollo
+         y funcionamiento del país, como el derecho civil, penal, fiscal, laboral, y ambiental, entre otros. 
+         Por ejemplo, el Código Penal establece los delitos y sus sanciones, el Código Civil regula las relaciones 
+         entre particulares, y las leyes tributarias garantizan el financiamiento de servicios públicos.
+    </p>
+    <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Características</th>
+              <th>Importancia</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th><strong>Universalidad:</strong> 
+                Se aplica a todos los ciudadanos y entidades dentro del país.                
+            </th>
+              <th><strong>Regulación de la Sociedad: </strong> 
+                Establece normas que guían la conducta de los ciudadanos.
+            </th>
+            </tr>
+            <tr>
+              <th><strong>Jerarquía:</strong> 
+                Las leyes nacionales deben respetar la Constitución, que es la norma suprema.
+            </th>
+              <th><strong>Protección de Derechos:</strong> 
+                Garantiza derechos fundamentales y libertades.
+            </th>
+            </tr>
+            <tr>
+              <th><strong>Estabilidad:</strong> 
+                Aunque puede cambiar, la legislación nacional tiende a ser más estable que la legislación local o regional.
+            </th>
+              <th><strong>Estabilidad Jurídica: </strong> 
+                Proporciona un marco legal claro y predecible para los ciudadanos y las empresas.                
+            </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <p class="parrafo-formal">
+        Es importante destacar que la legislación nacional no solo busca imponer límites, sino también proteger derechos, 
+        como la libertad, la igualdad y la seguridad jurídica, además de fomentar el desarrollo y la cohesión social. 
+        Asimismo, se adapta continuamente para responder a los desafíos y necesidades cambiantes de la sociedad, como la 
+        protección de datos personales o la regulación del comercio electrónico.
+
+      </p>
+
+        <h2 class="titulo-formal">Fuentes de la Legislación Nacional</h2>
+        <ol>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+               <strong>Constitución: </strong>
+               Documento fundamental que establece los principios y derechos básicos del país.
+            </li>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+               <strong>Leyes Ordinarias:  </strong>
+               Normas aprobadas por el poder legislativo que regulan diversas áreas (civil, penal, laboral, etc.).
+            </li>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+               <strong>Leyes Especiales: </strong>
+               Normas que abordan situaciones específicas, como leyes ambientales o de protección al consumidor.
+            </li>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+                <strong>Reglamentos:  </strong>
+                Normas que desarrollan y detallan las leyes para su aplicación práctica.
+             </li>
+        </ol>
+
+        <h2 class="titulo-formal">Proceso de Creación</h2>
+        <ol>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+               <strong>Iniciativa Legislativa: </strong>
+               Puede ser propuesta por el ejecutivo, legisladores o, en algunos casos, por la ciudadanía.
+            </li>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+               <strong>Debate y Aprobación: </strong>
+               Las propuestas son discutidas y votadas en el órgano legislativo (como el Congreso o Parlamento).
+            </li>
+            <li> <!--Strong, ahora se usara para contar pero en numeracion-->
+               <strong>Promulgación: </strong>
+               Una vez aprobada, la ley es promulgada por el presidente o el jefe de gobierno y publicada en el diario oficial.
+            </li>
+        </ol>
+
+        <h2 class="titulo-formal">Ejemplos de Legislación Nacional</h2>
+        <ul>
+            <li><strong>Código Civil: </strong>
+                Regula las relaciones privadas entre ciudadanos.   
+            </li>
+            <li><strong>Código Penal: </strong>
+                Define delitos y penas.
+            </li>
+            <li><strong>Ley de Educación: </strong>
+                Establece normas sobre el sistema educativo.
+            </li>
+        </ul>
+    </div>
+    <footer>
+        <span class="copyright">©</span> 
+        <span class="authors">2024 Autor Tannia Garcia Maximiliamo</span>
+    </footer>
+</body>
+</html>

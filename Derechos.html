@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+    <style>
+        body {
+            background-color: #a03517ba; /*Color del fondo */
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Asegura que ocupe el alto total de la pantalla */
+        }
+
+        /* Barra de Navegación */
+        .block-menu {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: rgba(155, 155, 155, 0.653);
+        }
+
+        /* Estilo de los bloques */
+        .block-menu a {
+            display: block;
+            background-color: #9a4831c1;
+            padding: 9px;
+            text-decoration: none;
+            color: rgb(219, 217, 217);
+            text-align: center;
+            border-radius: 10px; /* Los bordes de cada bloque */
+            margin: 0 10px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        /* Efecto 3D al pasar el cursor */
+        .block-menu a:hover {
+            transform: translateY(3px) scale(1.1); 
+            /* Que tanto de 3D deseamos, ya sea para abajo se quita el menos, en caso para arriba se pone el menos */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: #892c12; /*Color, cuando se llegue a seleccionar el bloque*/
+        }
+
+        /* Efectos de color */
+        .block-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; /*Espacio entre la linea y el bloque */
+            left: 0;
+            width: 100%;
+            height: 2px; /*Acho de la linea */
+            background-color: #000000;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease; /*Transicion de la linea de abajo osea de los bordes */
+        }
+        .block-menu a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Responsividad  */
+        @media (max-width: 768px) {
+            .block-menu {
+                flex-direction: column;
+            }
+        }
+
+        /* Imagen detrás de la barra de navegación */
+        .image-section {
+            position: relative;
+            height: 77vh; /* Ocupa el 70% de la pantalla */
+            background-image: url('img/Patentes.jpg'); /* URL de la imagen */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Texto sobre la imagen */
+        .image-section .text-overlay {
+            position: absolute;
+            top: 55%; /* Centrado verticalmente */
+            left: 60%; /* Centrado horizontalmente */
+            transform: translate(-50%, -50%); /* Ajusta el centro exacto */
+            color: white; /* Color del texto */
+            text-align: center; /* Centra el texto */
+            font-family: 'Poppins', sans-serif; /* Cambia la fuente */
+            font-size: 1.5rem; /* Tamaño del texto (grande) */
+            font-weight: bold; /* Negrita */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Sombra para resaltar el texto */
+            letter-spacing: 2px; /* Espaciado entre letras */
+        }
+
+        /* Contenedor principal */
+        .container {
+            padding-top: 50px; /* Espacio para la barra de navegación */
+            text-align: center;
+        }
+        
+        /* Estilo para los títulos */
+        .titulo-formal {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 24px;
+        font-weight: bold;
+        color: #892c12; /*Color de los titulos*/
+        margin-bottom: 15px;
+        margin-top: 20px;
+        
+        }
+
+        /* Estilo para los párrafos */
+        .parrafo-formal {
+       font-family: 'Times New Roman', Times, serif;
+       font-size: 16px;
+        text-align: justify;
+       line-height: 1.0;
+        margin-bottom: 15px;
+        padding: 0 20px;
+        color: rgb(0, 0, 0); /*Color del Texto */
+        }
+        /* Contenedor para el texto */
+        .contenedor-texto {
+        background-color: rgba(255, 254, 254, 0.9); /* Fondo gris claro semi-transparente */
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 90%;
+        border-radius: 5px;
+        flex: 1; /* Permite que el contenido principal ocupe el espacio restante */
+        }
+
+        .imagen-derecha {
+            float: right; /* Posiciona la imagen a la derecha */
+            margin-left: 25px; /* Espacio entre la imagen y el texto */
+            margin-right: 70px; /* Valor negativo para moverla hacia la izquierda */
+            margin-bottom: 25px; /* Espacio inferior */
+            width: 330px; /* Ajusta el tamaño de la imagen */
+            height: auto; /* Mantiene las proporciones */
+        }
+     /* Footer mejorado */
+     footer {
+        /* background-color: #000000;*/
+        text-align: center;
+        padding: 15px 20px;
+        margin-top: auto; /* Empuja el footer hacia abajo */  
+        bottom: 0;
+        width: 90%;
+        font-size: 10px;
+        color: #020202;
+        line-height: 1.5;
+    }
+
+    footer span.copyright {
+        font-weight: 100;
+        margin-right: 5px;
+    }
+
+    footer span.authors {
+        font-style: italic;
+    }
+    .pie-de-pagina {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #f2d3c2;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 16px;
+        color: #4f2c1f;
+        font-weight: bold;
+    }
+        
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <div class="block-menu">
+        <a href="Inicio.html">Inicio</a>
+        <a class="active" href="Derechos.html">Derechos</a>
+        <a href="Programas.html">Programas de Computo</a>
+        <a href="T_legislacion.html">Legislación</a>
+    </div>
+
+    <!-- Imagen detrás de la barra -->
+    <div class="image-section">
+        <!--<div class="text-overlay">
+            <h1>Derecho de autor y patentes</h1>
+        </div> -->
+    </div>
+    <!--Informacion -->
+    <div class="contenedor-texto">
+        <h2 class="titulo-formal">Derecho informático</h2>
+        <p class="parrafo-formal">
+            El derecho informático es un área del derecho que se 
+            encarga de regular las relaciones jurídicas que surgen en el ámbito 
+            de las nuevas tecnologías. Se trata de un conjunto de normas, principios 
+            e instituciones que regulan el uso de la información electrónica, 
+            la protección de datos personales, la seguridad informática y otros aspectos relacionados. 
+            El derecho informático aborda diversas áreas, como: Derecho de autor, Delitos informáticos, 
+            Responsabilidad civil por daños emergentes, Derecho procesal informático, Protección de la propiedad 
+            intelectual.
+            La informática se caracteriza por ser un ámbito muy cambiante, por este motivo, esta ciencia jurídica 
+            analiza las modificaciones de la informática y/o las TICs respecto a la sociedad, con la finalidad de 
+            crear principios y normativas que logren regularla adecuadamente.
+        </p>
+        <img class="imagen-derecha" src="img/DereyPro.png" alt="Ejemplo de imagen">
+        <h2 class="titulo-formal">¿Qué son los derechos de autor?</h2>
+        <p class="parrafo-formal">
+            Los derechos de autor otorgan a su titular el derecho exclusivo de usar la obra, con algunas excepciones. 
+            Cuando alguien crea una obra original y la fija en un soporte físico, automáticamente se convierte en el 
+            titular de los derechos de autor de dicha obra. Son la protección legal del código destinado a ser leído por una máquina. 
+            Los desarrolladores y propietarios de software lo utilizan para evitar que las personas copien su propiedad intelectual sin permiso 
+            o que lo utilicen de cualquier forma que no hayan acordado.
+        </p>
+        <p class="parrafo-formal">
+            Las obras que se prestan a la protección por derecho de autor van desde los libros, la música, la pintura, 
+            la escultura y las películas hasta los programas informáticos, las bases de datos, los anuncios publicitarios, 
+            los mapas y los dibujos técnicos.
+        </p>
+        <h2 class="titulo-formal">¿Qué pasa si no tiene derechos de un autor?</h2>
+        <ul> <!--Puntos claves, lo que se va a usar son puntos y no numeros, de igual forma se le dara en forma negrita-->
+            <!--el strong es el texto que se le dio a los puntos claves-->
+            <li><strong>Pérdida de control sobre la obra:
+            </strong> Sin derechos de autor protegidos, el creador no tiene control sobre cómo se utiliza, reproduce, distribuye 
+            o comunica públicamente.</li>
+            <li><strong>Uso no autorizado:
+            </strong> Otros pueden utilizar la obra sin permiso, lo que puede generar pérdidas económicas y daño a la reputación 
+            del creador.</li>
+            <li><strong>Plagio:
+            </strong> La obra puede ser utilizada por otros sin reconocer la autoría original, lo que puede generar conflictos y 
+            disputas.</li>
+            <li><strong>Pérdida de ingresos:
+            </strong> Sin derechos de autor protegidos, el creador de la obra no puede generar ingresos a través de la licencia o la 
+            venta de la obra.</li>
+            <li><strong>Daño a la reputación:
+            </strong> La falta de protección de los derechos de autor puede generar un daño a la reputación del creador, ya que otros 
+            pueden utilizar la obra de manera que no sea consistente con la visión o los valores del creador.</li>
+            <li><strong>Problemas legales:
+            </strong> La falta de protección de los derechos de autor puede generar problemas legales, ya que otros pueden demandar al 
+            creador por supuestas infracciones de derechos de autor.</li>
+            <li><strong>Pérdida de la propiedad intelectual:
+            </strong> La falta de protección de los derechos de autor puede generar la pérdida de la propiedad intelectual, ya que 
+            otros pueden utilizar la obra de manera que no sea consistente con la visión o los valores del creador.</li>
+            <li><strong>Dificultades para proteger la obra:
+            </strong> Sin derechos de autor protegidos, puede ser difícil para el creador proteger la obra contra la piratería, 
+            el plagio y otros tipos de infracciones.</li>
+        </ul>
+        <h2 class="titulo-formal">Derechos de Patentes</h2>
+        <p class="parrafo-formal">
+            Los derechos de patentes son un tipo de propiedad intelectual que protege las invenciones y los procesos innovadores. 
+            Una patente es un derecho exclusivo que se otorga a un inventor o a una empresa para explotar una invención durante un 
+            período determinado de tiempo, generalmente entre 15 y 20 años.
+        </p>
+        <img class="imagen-derecha" src="img/DereyPate.png" alt="Ejemplo de imagen">
+        <p class="parrafo-formal">
+            Los derechos de patentes se pueden clasificar en diferentes tipos, incluyendo:
+        </p>
+        <ul>
+            <li><strong>Patentes de invención:</strong>Protegen las invenciones y los procesos innovadores.</li>
+            <li><strong>Patentes de modelo de utilidad:</strong>
+                Protegen las invenciones que son nuevas y útiles, pero no necesariamente innovadoras.</li>
+            <li><strong>Patentes de diseño: </strong>Protegen los diseños y la apariencia de los productos.</li>
+        </ul>
+        
+        <h2 class="titulo-formal">Riesgos de los derechos de patentes:</h2>
+        <ul>
+            <li><strong>Infracción de patentes:</strong>
+                El riesgo de que alguien infrinja la patente y utilice la invención sin permiso.
+            </li>
+            <li><strong>Litigios:</strong>
+                El riesgo de que se produzcan litigios y disputas sobre la validez o la interpretación de la patente.
+            </li>
+            <li><strong>Costos de mantenimiento:</strong>
+                El riesgo de que los costos de mantener la patente sean altos y no se justifiquen por los beneficios obtenidos.
+            </li>
+            <li><strong>Limitaciones geográficas:</strong>
+            El riesgo de que la patente solo sea válida en un país o región específica.
+            </li>
+            <li><strong>Limitaciones temporales:</strong>
+            El riesgo de que la patente expire después de un período determinado de tiempo.
+            </li>
+            <li><strong>Riesgo de que la patente sea invalidada:</strong>
+            El riesgo de que la patente sea invalidada por una corte o una autoridad administrativa.
+            </li>
+            <li><strong>Riesgo de que la patente no sea suficientemente amplia: </strong>
+            El riesgo de que la patente no sea lo suficientemente amplia para cubrir todas las posibles aplicaciones de la invención.
+            </li>
+        </ul>
+    </div>
+    <footer>
+        <span class="copyright">©</span> 
+        <span class="authors">2024 Autor: Miriam Martinez Gonzalez</span>
+    </footer>
+</body>
+</html>
