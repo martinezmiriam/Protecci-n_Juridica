@@ -80,19 +80,19 @@
             background-repeat: no-repeat;
         }
         /* Ajustes para pantallas pequeñas */
-            @media screen and (max-width: 700px) {
-            .image-section {
-            height: 50vh; /* Reduce la altura en móviles */
-            background-size: contain; /* Ajusta la imagen para que se vea completa */
-        }
+@media screen and (max-width: 768px) {
+    .image-section {
+        height: auto; /* Ajusta la altura automáticamente */
+        background-size: contain; /* Asegura que la imagen se vea completa */
     }
+}
 
-            @media screen and (max-width: 400px) {
-            .image-section {
-            height: 40vh; /* Altura más pequeña en pantallas muy pequeñas */
-            background-size: cover; /* Vuelve a cubrir el espacio, ajustado */
-        }
+@media screen and (max-width: 480px) {
+    .image-section {
+        height: auto; /* Permite que se adapte al contenido */
+        background-size: contain; /* Mantiene la imagen visible completa */
     }
+}
 
         /* Texto sobre la imagen */
         .image-section .text-overlay {
