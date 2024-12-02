@@ -80,6 +80,14 @@
             background-repeat: no-repeat;
         }
 
+        /* Ajustes para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .image-section {
+        height: 50vh; /* Reduce la altura en móviles */
+        background-size: contain; /* Ajusta la imagen para que se vea completa */
+    }
+}
+
         /* Texto sobre la imagen */
         .image-section .text-overlay {
             position: absolute;
