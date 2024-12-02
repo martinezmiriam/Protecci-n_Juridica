@@ -82,15 +82,15 @@
         /* Ajustes para pantallas pequeñas */
 @media screen and (max-width: 768px) {
     .image-section {
-        height: auto; /* Ajusta la altura automáticamente */
-        background-size: contain; /* Asegura que la imagen se vea completa */
+        height: 50vh; /* Reduce la altura en móviles */
+        background-size: contain; /* Ajusta la imagen para que se vea completa */
     }
 }
 
 @media screen and (max-width: 480px) {
     .image-section {
-        height: auto; /* Permite que se adapte al contenido */
-        background-size: contain; /* Mantiene la imagen visible completa */
+        height: 40vh; /* Altura más pequeña en pantallas muy pequeñas */
+        background-size: cover; /* Vuelve a cubrir el espacio, ajustado */
     }
 }
 
@@ -149,7 +149,7 @@
         .imagen-derecha {
             float: right; /* Posiciona la imagen a la derecha */
             margin-left: 25px; /* Espacio entre la imagen y el texto */
-            margin-right: 70px; /* Valor negativo para moverla hacia la izquierda */
+            margin-right: 40px; /* Valor negativo para moverla hacia la izquierda */
             margin-bottom: 25px; /* Espacio inferior */
             width: 330px; /* Ajusta el tamaño de la imagen */
             height: auto; /* Mantiene las proporciones */
