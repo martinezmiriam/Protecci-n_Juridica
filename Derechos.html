@@ -74,7 +74,7 @@
         .image-section {
             position: relative;
             height: 77vh; 
-            background-image: url('img/Patentes.jpg'); 
+            background-image: url('img/Patentes.jpg'); /* Imagen por defecto (para escritorio) */
             background-position: center; 
             background-repeat: no-repeat; 
             margin: 0; 
@@ -83,17 +83,19 @@
         }
         /* Ajustes para pantallas pequeñas */
         @media screen and (max-width: 768px) {
-            div[style] {
-                height: 50vh; /* Ajusta a una altura más pequeña si es necesario */
-                background-size: contain; /* Asegura que se vea completa */
-                background-position: center; /* Mantiene la imagen centrada */
+            .image-section {
+                background-image: url('img/Patentes-tablet.jpg'); /* Imagen para pantallas medianas */
+                height: 60vh; /* Ajustar la altura si es necesario */
+                background-size: cover; /* Puede cubrir toda la sección */
             }
         }
-        
+    
+        /* Cambiar imagen para pantallas muy pequeñas (teléfonos móviles) */
         @media screen and (max-width: 480px) {
-            div[style] {
-                height: auto; /* Deja que la altura sea dinámica */
-                background-size: contain; /* Asegura que la imagen se ajuste */
+            .image-section {
+                background-image: url('img/DerechosAyP.png'); /* Imagen para móviles */
+                height: auto; /* Altura dinámica */
+                background-size: cover; /* Ajustar para que ocupe toda la sección */
             }
         }
 
