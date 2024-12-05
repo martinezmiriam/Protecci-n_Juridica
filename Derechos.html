@@ -75,25 +75,25 @@
             position: relative;
             height: 77vh; 
             background-image: url('img/Patentes.jpg'); 
-            background-size: cover; 
             background-position: center; 
             background-repeat: no-repeat; 
             margin: 0; 
             padding: 0;
+            background-size: contain; /* Ajusta la imagen dentro del espacio disponible */
         }
         /* Ajustes para pantallas pequeñas */
         @media screen and (max-width: 768px) {
             div[style] {
-                height: auto; /* Ajusta la altura automáticamente */
-                background-size: contain; /* Muestra la imagen completa */
-                background-position: center; /* Centrada */
+                height: 50vh; /* Ajusta a una altura más pequeña si es necesario */
+                background-size: contain; /* Asegura que se vea completa */
+                background-position: center; /* Mantiene la imagen centrada */
             }
         }
         
         @media screen and (max-width: 480px) {
             div[style] {
-                height: auto; /* Ajusta para dispositivos muy pequeños */
-                background-size: contain; /* Mantén la imagen visible */
+                height: auto; /* Deja que la altura sea dinámica */
+                background-size: contain; /* Asegura que la imagen se ajuste */
             }
         }
 
