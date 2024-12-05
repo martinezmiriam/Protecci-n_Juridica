@@ -73,31 +73,29 @@
         /* Imagen detrás de la barra de navegación */
         .image-section {
             position: relative;
-            height: 77vh; 
-            background-image: url('img/Patentes.jpg'); /* Imagen por defecto (para escritorio) */
-            background-position: center; 
-            background-repeat: no-repeat; 
-            margin: 0; 
-            padding: 0;
-            background-size: contain; /* Ajusta la imagen dentro del espacio disponible */
+            height: 70vh; /* Ocupa el 70% de la pantalla */
+            background-image: url('img/Patentes.jpg'); /* URL de la imagen */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         /* Ajustes para pantallas pequeñas */
-        @media screen and (max-width: 768px) {
-            .image-section {
-                background-image: url('img/DerechosAyP.png'); /* Imagen para pantallas medianas */
-                height: 60vh; /* Ajustar la altura si es necesario */
-                background-size: cover; /* Puede cubrir toda la sección */
-            }
-        }
-    
-        /* Cambiar imagen para pantallas muy pequeñas (teléfonos móviles) */
-        @media screen and (max-width: 480px) {
-            .image-section {
-                background-image: url('img/DerechosAyP.png'); /* Imagen para móviles */
-                height: auto; /* Altura dinámica */
-                background-size: cover; /* Ajustar para que ocupe toda la sección */
-            }
-        }
+@media screen and (max-width: 768px) {
+  .image-section {
+      height: 77vh; /* Mantén la altura fija */
+      background-size: contain; /* Ajusta la imagen dentro del espacio disponible */
+      background-position: center; /* Asegura que se mantenga centrada */
+
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .image-section {
+      height: 77vh; /* Mantén la misma altura */
+      background-size: contain; /* La imagen siempre será visible completa */
+      background-position: center; /* No cambia su lugar */
+  }
+}
 
         /* Texto sobre la imagen */
         .image-section .text-overlay {
@@ -154,9 +152,9 @@
         .imagen-derecha {
             float: right; /* Posiciona la imagen a la derecha */
             margin-left: 25px; /* Espacio entre la imagen y el texto */
-            margin-right: 40px; /* Valor negativo para moverla hacia la izquierda */
+            margin-right: 20px; /* Valor negativo para moverla hacia la izquierda */
             margin-bottom: 25px; /* Espacio inferior */
-            width: 330px; /* Ajusta el tamaño de la imagen */
+            width: 300px; /* Ajusta el tamaño de la imagen */
             height: auto; /* Mantiene las proporciones */
         }
      /* Footer mejorado */
