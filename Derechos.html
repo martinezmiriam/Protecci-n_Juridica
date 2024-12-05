@@ -73,31 +73,29 @@
         /* Imagen detrás de la barra de navegación */
         .image-section {
             position: relative;
-            height: 77vh; /* Ocupa el 70% de la pantalla */
-            background-image: url('img/Patentes.jpg'); /* URL de la imagen */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin: 0%; /* Elimina márgenes adicionales */
-            padding: 0%;
+            height: 77vh; 
+            background-image: url('img/Patentes.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            margin: 0; 
+            padding: 0;
         }
         /* Ajustes para pantallas pequeñas */
-@media screen and (max-width: 768px) {
-    .image-section {
-        height: 77vh; /* Mantén la altura fija */
-        background-size: contain; /* Ajusta la imagen dentro del espacio disponible */
-        background-position: center; /* Asegura que se mantenga centrada */
-
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .image-section {
-        height: 77vh; /* Mantén la misma altura */
-        background-size: contain; /* La imagen siempre será visible completa */
-        background-position: center; /* No cambia su lugar */
-    }
-}
+        @media screen and (max-width: 768px) {
+            div[style] {
+                height: auto; /* Ajusta la altura automáticamente */
+                background-size: contain; /* Muestra la imagen completa */
+                background-position: center; /* Centrada */
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            div[style] {
+                height: auto; /* Ajusta para dispositivos muy pequeños */
+                background-size: contain; /* Mantén la imagen visible */
+            }
+        }
 
         /* Texto sobre la imagen */
         .image-section .text-overlay {
